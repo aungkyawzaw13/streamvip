@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pyidaungsu', sans-serif; /* မြန်မာစာအတွက် */
+    background: linear-gradient(to bottom, #1a1a1a, #4a4a4a); /* နောက်ခံ Gradient */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+/* တစ်ခုလုံးကို ထိန်းချုပ်မည့် Container */
+.app-container {
+    width: 100%;
+    height: 100vh;
+    max-width: 480px; /* ဖုန်း screen အရွယ်အစားထက် မကျော်စေရန် */
+    margin: 0 auto;   /* အလယ်မှာ ထားရန် */
+    background: #121212; /* နောက်ခံ အမှောင် */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+.profile-card {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.1); /* မှန်ကြည်ရောင် */
+    backdrop-filter: blur(10px); /* ဝါးသွားစေတဲ့ effect */
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.back-arrow {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.header h2 {
+    font-size: 18px;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.content p {
+    line-height: 1.8;
+    font-size: 14px;
+    text-align: justify;
+    color: #e0e0e0;
+}

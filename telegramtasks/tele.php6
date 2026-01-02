@@ -1,0 +1,89 @@
+<?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: ./login");
+    exit;
+}
+?>
+<?php
+include(__DIR__."/../include/config.php");
+// VIP list
+$sql = "SELECT id, text, link, pay, status FROM telegram ORDER BY id ASC";
+$result = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Card UI</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./telegramtasks/style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <i class="fas fa-chevron-left" onclick="history.back()"></i>
+        <span>Telegram Tasks</span>
+    </div>
+
+    <div class="vip-container">
+
+        <?php if($result && $result->num_rows > 0): ?>
+            <?php while($vip = $result->fetch_assoc()): ?>
+
+                <div class="vip-card <?= $vip['status'] == 0 ? 'locked' : '' ?>">
+
+                    <div class="vip-badge">
+                        <img src="/sp/image/telegram/tele.png" alt="VIP Icon">
+                    </div>
+
+                    <div class="vip-info">
+                        <h2 class="vip-title"><?= htmlspecialchars($vip['text']) ?></h2>
+                        
+                        <p class="vip-perks">
+                             MMK <?= htmlspecialchars($vip['pay']) ?>.00
+                        </p>
+                    </div>
+
+                    
+                            <button class="buy-btn"
+                                onclick="location.href='<?= htmlspecialchars($vip['link']) ?>'">
+                                open
+                            </button>
+                        
+                    </div>
+                      <?php endwhile; ?>
+        <?php else: ?>
+            <p style="color:white;text-align:center;">VIP မရှိပါ</p>
+        <?php endif; ?>
+                </div>
+
+            
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function buyVIP(vipId) {
+    Swal.fire({
+        title: 'VIP ဝယ်မည်လား?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'ဝယ်မည်',
+        cancelButtonText: 'မဝယ်တော့ပါ'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "vip_buy.php?vip_id=" + vipId;
+        }
+    });
+}
+</script>
+
+</body>
+</html>

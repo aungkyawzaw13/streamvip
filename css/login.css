@@ -1,0 +1,231 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pyidaungsu', sans-serif; /* မြန်မာစာအတွက် */
+        }
+        
+        body {
+            background-color: #000;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+.hero{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 450px;
+    position: relative;
+}
+        /* Background Movie Grid - ပုံထဲကလို စောင်းစောင်းလေးဖြစ်အောင် */
+        .movie-grid {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 140%;
+            height: 140%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            transform: rotate(-10deg); /* Design အတိုင်း စောင်းလိုက်တာပါ */
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .overlay-dark {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+        }
+
+        /* Login Container */
+        .login-container {
+            position: relative;
+            z-index: 10;
+            width: 85%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 100px;
+            margin-bottom: 40px;
+        }
+
+        /* Input Styles */
+        .input-group {
+            background: rgba(255, 255, 255, 0.12); /* Glassmorphism */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            height: 52px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding-right: 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            height: 60%;
+            font-size: 15px;
+        }
+
+        .dropdown-trigger span { margin-right: 5px; }
+
+        input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            padding-left: 15px;
+            flex: 1;
+            font-size: 15px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .icon-svg { 
+            color: rgba(255, 255, 255, 0.7); 
+            margin-right: 5px; 
+            display: flex; 
+        }
+
+        /* Buttons - Design အတိုင်း အရောင်ချိန်ထားပါတယ် */
+        .btn-login {
+            width: 100%; height: 48px;
+            border-radius: 24px;
+            border: none;
+            background: #4F46E5; /* Indigo Blue */
+            color: white;
+            font-size: 15px;
+            margin-top: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-register {
+            width: 100%; height: 48px;
+            border-radius: 24px;
+            border: none;
+            background: #ffffff;
+            color: #000;
+            font-size: 15px;
+            margin-top: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Bottom Sheet (Vant UI Style) */
+        .sheet-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 100;
+        }
+
+        .bottom-sheet {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: #1c1c1e;
+            border-radius: 20px 20px 0 0;
+            z-index: 101;
+            transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-bottom: 40px;
+        }
+
+        .bottom-sheet.active { bottom: 0; }
+
+        .sheet-item {
+            padding: 18px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            border-bottom: 1px solid #2c2c2e;
+            cursor: pointer;
+        }
+
+        .sheet-close {
+            padding: 18px;
+            text-align: center;
+            color: #8e8e93;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ===== SweetAlert Dark Theme ===== */
+.swal2-popup {
+    background: #141414 !important;
+    color: #ffffff !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,.7) !important;
+}
+
+.swal2-title {
+    color: #ffffff !important;
+    font-size: 20px !important;
+}
+
+.swal2-html-container {
+    color: #cccccc !important;
+    font-size: 15px !important;
+}
+
+.swal2-confirm {
+    background-color: #e50914 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+}
+
+.swal2-cancel {
+    background-color: #333 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #e50914 !important;
+    color: #e50914 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #ff4c4c !important;
+    color: #ff4c4c !important;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #f5a623 !important;
+    color: #f5a623 !important;
+}
+
+/* Loading spinner */
+.swal2-loader {
+    border-color: #e50914 transparent #e50914 transparent !important;
+}

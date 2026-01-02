@@ -1,0 +1,108 @@
+/* အခြေခံ Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pyidaungsu', sans-serif;
+}
+
+body {
+    background-color: #080808;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Header Section */
+.header {
+    background-color: #2c2c34;
+    color: white;
+    padding: 18px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* List Items Section */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #f10101;
+    transition: background 0.3s;
+}
+
+.clickable:active {
+    background-color: #f5f5f5;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fa5f05;
+}
+
+.action-text {
+    color: #8e99af;
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.arrow {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+/* Logout Button ပုံစံအသစ် */
+.logout-section {
+    margin-top: auto; /* အောက်ဆုံးမှာ ကပ်နေအောင် */
+    padding: 30px 20px;
+    background: #fcfcfc;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px; /* ထောင့်လေးတွေ နည်းနည်းဝိုင်းမယ် */
+    
+    /* ပုံထဲကလို အမည်းရောင် Gradient သုံးထားပါတယ် */
+    background: linear-gradient(180deg, #44444c 0%, #1a1a1d 100%);
+    
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s;
+}
+
+.logout-btn:active {
+    transform: scale(0.98); /* နှိပ်လိုက်ရင် အထဲကျွံသွားတဲ့ effect */
+}

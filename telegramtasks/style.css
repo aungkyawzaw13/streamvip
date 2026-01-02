@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    background-color: #1a1a1d;
+}
+
+.vip-container {
+    padding: 15px;
+}
+
+/* VIP Card Design */
+.vip-card {
+    background: linear-gradient(145deg, #2c2c34, #1a1a1d);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.vip-badge img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.vip-info {
+    flex-grow: 1;
+}
+
+.vip-title {
+    font-size: 18px;
+    color: #ffcc00; /* Gold color */
+    margin-bottom: 5px;
+}
+
+.vip-price, .vip-perks {
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 3px;
+}
+
+.buy-btn {
+    background: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Locked State */
+.locked {
+    opacity: 0.7;
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.locked i {
+    color: #666;
+    font-size: 20px;
+}

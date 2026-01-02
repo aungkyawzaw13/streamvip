@@ -1,0 +1,80 @@
+<?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: ./login");
+    exit;
+}
+include(__DIR__ . "/../include/config.php");
+
+$uid = $_SESSION["user_id"];
+
+// Use a try-catch or check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$stmt = mysqli_prepare($conn, "SELECT phone, vip_level, balance FROM users WHERE id=? LIMIT 1");
+mysqli_stmt_bind_param($stmt, "i", $uid);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$user = mysqli_fetch_assoc($result);
+
+// Default balance if null
+$balance = number_format($user["balance"] ?? 0, 2);
+?>
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet UI</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./user/wallet.css">
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <span class="back-btn" onclick="history.back()">&#10094;</span>
+        <span class="title">ငါ့ပိုက်ဆံအိတ်</span>
+    </div>
+
+    <div class="wallet-card">
+        <div class="balance-info">
+            <div class="balance-item">
+                <h2 class="yellow-text" id="main-balance"><?= $balance ?></h2>
+                <p>အဓိကပိုက်ဆံအိတ်</p>
+            </div>
+            <div class="balance-item">
+                <h2 class="yellow-text">0.00</h2>
+                <p>ကော်မရှင်ပိုက်ဆံအိတ်</p>
+            </div>
+        </div>
+        
+        <hr class="card-divider">
+
+        <div class="card-actions">
+            <div class="action-btn yellow-text" onclick="location.href='./recharge'">ငွေဖြည့်</div>
+            <div class="divider-line"></div>
+            <div class="action-btn" onclick="location.href='/sp/withdraw'">ထုတ်ယူ</div>
+        </div>
+    </div>
+
+    <div class="tabs-nav">
+        <div class="tab active" onclick="switchTab(this, 'recharge')">recharge မှတ်တမ်း</div>
+        <div class="tab" onclick="switchTab(this, 'withdraw')">ထုတ်ယူမှုမှတ်တမ်း</div>
+    </div>
+
+    <div class="history-container" id="history-list">
+        <div id="no-data" class="empty-state">
+            ဒေတာမရှိပါ
+        </div>
+    </div>
+</div>
+
+<?php include('./footer.php'); ?>
+
+<script src="./user/wallet.js"></script>
+</body>
+</html>
